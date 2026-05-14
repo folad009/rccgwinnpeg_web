@@ -5,17 +5,18 @@ export const lscSite = {
   churchNameShort: "Living Seed Church",
   cityLine: "Winnipeg, Manitoba",
 
-  heroBadge: "Welcome Home",
-  heroTitle: "RCCG Living Seed Church",
+  heroBadge: "RCCG Living Seed Church Winnipeg",
+  heroTitle: "Raising kingdom ambassadors through the spread of the love of Christ to everyone in the community.",
   heroTitleAccent: "Young Adults & Youth",
-  heroLead:
-    "A movement of The Redeemed Christian Church of God, raising believers of character who are excellent and on fire for God.",
+  heroLead: "Join us on a journey of transformation through word, prayer and fellowship",
 
   welcomeHeading: "WELCOME",
   welcomeIntro: "I am thrilled to introduce you to Living Seed Church!",
   /** Served from `public/images` */
   welcomePastorPhotoSrc: "/images/pastor-philip-olabisi.png",
   welcomePastorPhotoAlt: "Pastor Philip Olabisi, Living Seed Church Winnipeg",
+  coPastorSrc: "/images/rccg-lsc-pastors.jpg",
+  coPastorAlt: "Co-Pastor Abisola Olabisi, Living Seed Church Winnipeg",
 
   welcomeParagraphs: [
     "At Living Seed Church, we welcome people from all backgrounds. Living Seed is a home for all with a vision to be a contemporary and multicultural church. You will also notice the bond we share as a people and our commitment to excellence in all we do.",

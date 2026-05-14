@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, MapIcon, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -14,25 +14,25 @@ gsap.registerPlugin(ScrollTrigger);
 
 const heroSlides = [
   {
-    src: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=2670&auto=format&fit=crop",
+    src: "/images/rccg-lsc-img6.jpg",
     alt: "Worship gathering",
     quote: "Therefore, since we have such a hope…",
     citation: "2 Corinthians 3:12",
   },
   {
-    src: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=2673&auto=format&fit=crop",
+    src: "/images/rccg-lsc-img5.jpg",
     alt: "Church community",
     quote: "For where two or three gather in my name, there am I with them.",
     citation: "Matthew 18:20",
   },
   {
-    src: "https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=2670&auto=format&fit=crop",
+      src: "/images/rccg-lsc-img4.jpg",
     alt: "Hands raised in worship",
     quote: "Let everything that has breath praise the Lord.",
     citation: "Psalm 150:6",
   },
   {
-    src: "https://images.unsplash.com/photo-1507692049790-de58290a4334?q=80&w=2670&auto=format&fit=crop",
+    src: "/images/rccg-lsc-img3.jpg",
     alt: "Sunlight in sanctuary",
     quote: "Taste and see that the Lord is good.",
     citation: "Psalm 34:8",
@@ -52,7 +52,8 @@ function HeroImageSlider() {
   useEffect(() => {
     if (paused) return;
     const prefersReduced =
-      typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReduced) return;
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % heroSlides.length);
@@ -64,7 +65,7 @@ function HeroImageSlider() {
 
   return (
     <div
-      className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] bg-slate-900"
+      className="relative rounded-3xl overflow-hidden shadow-2xl aspect-4/5 bg-slate-900"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -73,17 +74,24 @@ function HeroImageSlider() {
           key={s.src}
           className={cn(
             "absolute inset-0 transition-opacity duration-700 ease-out",
-            i === index ? "opacity-100 z-[1]" : "opacity-0 z-0 pointer-events-none",
+            i === index
+              ? "opacity-100 z-1"
+              : "opacity-0 z-0 pointer-events-none",
           )}
           aria-hidden={i !== index}
         >
-          <img src={s.src} alt={s.alt} className="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"} />
+          <img
+            src={s.src}
+            alt={s.alt}
+            className="w-full h-full object-cover"
+            loading={i === 0 ? "eager" : "lazy"}
+          />
         </div>
       ))}
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent z-[2] pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/55 via-black/15 to-transparent z-2 pointer-events-none" />
 
-      <div className="absolute bottom-28 left-0 right-0 z-[4] flex justify-center gap-2">
+      <div className="absolute bottom-28 left-0 right-0 z-4 flex justify-center gap-2">
         {heroSlides.map((_, i) => (
           <button
             key={i}
@@ -93,22 +101,28 @@ function HeroImageSlider() {
             onClick={() => setIndex(i)}
             className={cn(
               "h-2 rounded-full transition-all",
-              i === index ? "w-8 bg-white" : "w-2 bg-white/50 hover:bg-white/80",
+              i === index
+                ? "w-8 bg-white"
+                : "w-2 bg-white/50 hover:bg-white/80",
             )}
           />
         ))}
       </div>
 
-      <div className="absolute bottom-8 left-8 right-8 text-white z-[3] pointer-events-none">
-        <p className="font-serif text-2xl italic transition-opacity duration-500">{slide.quote}</p>
-        <p className="mt-2 text-sm opacity-80 uppercase tracking-widest">{slide.citation}</p>
+      <div className="absolute bottom-8 left-8 right-8 text-white z-3 pointer-events-none">
+        <p className="font-serif text-2xl italic transition-opacity duration-500">
+          {slide.quote}
+        </p>
+        <p className="mt-2 text-sm opacity-80 uppercase tracking-widest">
+          {slide.citation}
+        </p>
       </div>
 
       <button
         type="button"
         aria-label="Previous image"
         onClick={() => go(-1)}
-        className="absolute left-3 top-1/2 -translate-y-1/2 z-[4] w-11 h-11 rounded-full bg-white/90 text-slate-900 shadow-md flex items-center justify-center hover:bg-white transition-colors"
+        className="absolute left-3 top-1/2 -translate-y-1/2 z-4 w-11 h-11 rounded-full bg-white/90 text-slate-900 shadow-md flex items-center justify-center hover:bg-white transition-colors"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
@@ -116,11 +130,10 @@ function HeroImageSlider() {
         type="button"
         aria-label="Next image"
         onClick={() => go(1)}
-        className="absolute right-3 top-1/2 -translate-y-1/2 z-[4] w-11 h-11 rounded-full bg-white/90 text-slate-900 shadow-md flex items-center justify-center hover:bg-white transition-colors"
+        className="absolute right-3 top-1/2 -translate-y-1/2 z-4 w-11 h-11 rounded-full bg-white/90 text-slate-900 shadow-md flex items-center justify-center hover:bg-white transition-colors"
       >
         <ChevronRight className="w-6 h-6" />
       </button>
-
     </div>
   );
 }
@@ -141,17 +154,36 @@ export function GenerationHome() {
         };
 
         const heroTl = gsap.timeline({ defaults: { ease } });
-        heroTl.from(".gc-hero-text > *", { y: 36, opacity: 0, duration: 0.75, stagger: 0.1 });
-        heroTl.from(".gc-hero-slider", { x: 48, opacity: 0, duration: 0.85 }, "-=0.55");
+        heroTl.from(".gc-hero-text > *", {
+          y: 36,
+          opacity: 0,
+          duration: 0.75,
+          stagger: 0.1,
+        });
+        heroTl.from(
+          ".gc-hero-slider",
+          { x: 48, opacity: 0, duration: 0.85 },
+          "-=0.55",
+        );
 
         gsap.to(".gc-hero-blur-top", {
           y: 56,
-          scrollTrigger: { trigger: ".gc-hero", start: "top top", end: "bottom top", scrub: 1.1 },
+          scrollTrigger: {
+            trigger: ".gc-hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.1,
+          },
           ease: "none",
         });
         gsap.to(".gc-hero-blur-bottom", {
           y: -40,
-          scrollTrigger: { trigger: ".gc-hero", start: "top top", end: "bottom top", scrub: 1.1 },
+          scrollTrigger: {
+            trigger: ".gc-hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.1,
+          },
           ease: "none",
         });
 
@@ -202,12 +234,25 @@ export function GenerationHome() {
         goingTl.fromTo(
           ".gc-going-heading > *",
           { autoAlpha: 0, y: 22 },
-          { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.08, ease: easeOut, immediateRender: false },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.55,
+            stagger: 0.08,
+            ease: easeOut,
+            immediateRender: false,
+          },
         );
         goingTl.fromTo(
           ".gc-going-visual",
           { autoAlpha: 0, x: -36 },
-          { autoAlpha: 1, x: 0, duration: 0.7, ease: easeOut, immediateRender: false },
+          {
+            autoAlpha: 1,
+            x: 0,
+            duration: 0.7,
+            ease: easeOut,
+            immediateRender: false,
+          },
           "<0.06",
         );
         goingTl.fromTo(
@@ -262,11 +307,12 @@ export function GenerationHome() {
             <span className="inline-block py-3 px-6 rounded-full bg-church-primary text-church-accent text-xs font-semibold tracking-wide uppercase mb-6">
               {lscSite.heroBadge}
             </span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-slate-900 leading-[1.08] mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-[1.08] mb-4">
               {lscSite.heroTitle}
             </h1>
-            <p className="text-xl md:text-2xl font-serif text-church-accent italic mb-6">{lscSite.heroTitleAccent}</p>
-            <p className="text-lg text-slate-900/80 mb-8 max-w-xl leading-relaxed">{lscSite.heroLead}</p>
+            <p className="text-lg text-slate-900/80 mb-8 max-w-xl leading-relaxed">
+              {lscSite.heroLead}
+            </p>
 
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <Link
@@ -298,7 +344,7 @@ export function GenerationHome() {
               <img
                 src={lscSite.welcomePastorPhotoSrc}
                 alt={lscSite.welcomePastorPhotoAlt}
-                className="w-full aspect-[4/5] object-cover object-[center_12%]"
+                className="w-full aspect-4/5 object-cover object-[center_12%]"
                 width={800}
                 height={1000}
                 loading="lazy"
@@ -315,12 +361,17 @@ export function GenerationHome() {
               {lscSite.welcomeIntro}
             </p>
             {lscSite.welcomeParagraphs.map((paragraph, idx) => (
-              <p key={idx} className="text-slate-700 leading-relaxed text-[17px] mb-6 last:mb-0">
+              <p
+                key={idx}
+                className="text-slate-700 leading-relaxed text-[17px] mb-6 last:mb-0"
+              >
                 {paragraph}
               </p>
             ))}
             <div className="mt-10 pt-8 border-t border-church-gold/50">
-              <p className="font-serif text-xl font-bold text-slate-900">{lscSite.welcomePastorName}</p>
+              <p className="font-serif text-xl font-bold text-slate-900">
+                {lscSite.welcomePastorName}
+              </p>
               <p className="text-church-orange font-semibold text-sm uppercase tracking-widest mt-2">
                 {lscSite.welcomePastorTitle}
               </p>
@@ -330,38 +381,14 @@ export function GenerationHome() {
       </section>
 
       {/* Watch Live schedule */}
-      <section className="gc-watch py-16 bg-slate-900 text-white">
+      <section className="gc-watch py-16 bg-linear-to-b from-[#3193B1] to-[#324085] text-white">
         <div className="container mx-auto px-6">
-          <div className="gc-watch-intro max-w-3xl">
-            <h2 className="text-4xl font-serif font-bold mb-6">{lscSite.watchTitle}</h2>
-            <p className="text-slate-200 mb-6">{lscSite.watchLead}</p>
-            <p className="text-slate-300 text-sm leading-relaxed border-l-2 border-church-orange pl-4">
-              {lscSite.serviceTimesNote}
-            </p>
-          </div>
-
-          <div className="gc-watch-grid grid md:grid-cols-2 gap-8">
-            <div className="gc-watch-card bg-white/5 rounded-3xl p-8 border border-white/10">
-              <h3 className="text-xl font-bold mb-4 text-white/90">Join Us Online</h3>
-              <p className="text-slate-200 leading-relaxed mb-6">{lscSite.serviceTimesNote}</p>
-              <div className="mt-8">
-                <Link
-                  to="/watch"
-                  className="bg-church-orange text-white px-6 py-3 rounded-full font-medium hover:bg-church-gold transition-colors inline-flex items-center gap-2"
-                >
-                  Watch Live <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-
-            <div className="gc-watch-card bg-white/5 rounded-3xl p-8 border border-white/10">
-              <h3 className="text-xl font-bold mb-3 text-white/90">A Promise</h3>
-              <p className="text-slate-200 leading-relaxed">
-                “Therefore, since we have such a hope, we are very bold.” <br />
-                <span className="text-slate-400 text-sm">2 Corinthians 3:12</span>
-              </p>
-            </div>
-          </div>
+          <h2 className="text-3xl text-center font-bold">
+            OUR PURPOSE AT LIVING SEED CHURCH LOVE JOY COMMUNITY
+          </h2>
+          <p className="text-center text-slate-200 mt-4 max-w-2xl mx-auto text-2xl leading-relaxed">
+            Building a biblical community one family at a time.
+          </p>
         </div>
       </section>
 
@@ -369,9 +396,9 @@ export function GenerationHome() {
       <section className="gc-going py-16 md:py-20 bg-church-bg">
         <div className="gc-going-inner container mx-auto px-6 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
-            <div className="gc-going-visual relative h-full min-h-[280px] md:min-h-[340px] rounded-3xl overflow-hidden shadow-xl ring-1 ring-slate-200/70 bg-slate-900">
+            <div className="gc-going-visual relative h-full min-h-70 md:min-h-85 rounded-3xl overflow-hidden shadow-xl ring-1 ring-slate-200/70 bg-slate-900">
               <img
-                src={lscSite.goingOnSectionImageSrc}
+                src="/images/rccg-lsc-img2.jpg"
                 alt={lscSite.goingOnSectionImageAlt}
                 className="absolute inset-0 h-full w-full object-cover"
                 loading="lazy"
@@ -379,7 +406,7 @@ export function GenerationHome() {
                 sizes="(min-width: 1024px) 50vw, 100vw"
               />
               <div
-                className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/35 to-slate-900/10 pointer-events-none"
+                className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-900/35 to-slate-900/10 pointer-events-none"
                 aria-hidden
               />
             </div>
@@ -387,45 +414,26 @@ export function GenerationHome() {
             <div className="flex flex-col min-h-0">
               <div className="gc-going-heading mb-8 text-left">
                 <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-3">
-                  What We Have Going On
+                  You Belong Here
                 </h2>
-                <p className="text-slate-600 leading-relaxed">
-                  Discover ways to worship, grow, and get plugged in.
+                <p className="text-[17px] text-slate-900/80 max-w-lg leading-relaxed mb-5">
+                  We are excited to connect, worship and lean into God’s Word
+                  together as one family with our online services. Each service
+                  will be full of passionate worship, an encouraging and
+                  relevant message from our Pastors, church updates and ways to
+                  stay engaged and be a part of the Church. Be sure to invite
+                  your friends and family to watch online with you, and we’ll
+                  see you at Living Seed Church at Home!
                 </p>
+                <Link
+              to="/give"
+              className="inline-flex items-center gap-2 bg-church-orange text-white px-8 py-4 rounded-full font-medium hover:bg-church-gold transition-colors"
+            >
+              Join us Today
+              <MapIcon className="w-4 h-4" />
+            </Link>
               </div>
 
-              <Accordion
-                className="gc-going-accordion max-h-[70vh] lg:max-h-[min(72vh,720px)] overflow-y-auto pr-1 -mr-1 [scrollbar-gutter:stable]"
-                itemClassName="group bg-white border border-slate-100 rounded-2xl p-5 shadow-sm hover:border-church-orange/25 transition-colors"
-                items={homeGoingOnAccordionItems().map((row) => ({
-                  key: row.key,
-                  title: row.title,
-                  content: (
-                    <div className="space-y-4">
-                      <p className="text-slate-600 leading-relaxed text-[15px]">{row.description}</p>
-                      {row.href !== "#" ? (
-                        row.external ? (
-                          <a
-                            href={row.href}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-2 text-church-orange font-semibold text-sm hover:underline"
-                          >
-                            {row.linkLabel} <ArrowRight className="w-4 h-4" />
-                          </a>
-                        ) : (
-                          <Link
-                            to={row.href}
-                            className="inline-flex items-center gap-2 text-church-orange font-semibold text-sm hover:underline"
-                          >
-                            {row.linkLabel} <ArrowRight className="w-4 h-4" />
-                          </Link>
-                        )
-                      ) : null}
-                    </div>
-                  ),
-                }))}
-              />
             </div>
           </div>
         </div>
@@ -436,15 +444,22 @@ export function GenerationHome() {
         <div className="container mx-auto px-6 max-w-5xl">
           <div className="gc-easter-panel rounded-3xl border border-white/10 bg-white/5 p-10 md:p-14 text-center">
             <div className="text-sm font-semibold tracking-wide uppercase text-church-accent mb-3">
-              Easter
+              Why we give?
             </div>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">{lscSite.easterTitle}</h2>
-            <p className="text-slate-200 mb-8">{lscSite.easterLead}</p>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
+              Be partner with Alone Church
+            </h2>
+            <p className="text-slate-200 mb-8">
+              We strive to reach people both locally and globally with the
+              life-giving message of Jesus Christ and your tithes and offerings
+              enable us to fulfill that mission.
+            </p>
             <Link
-              to="/easter"
+              to="/give"
               className="inline-flex items-center gap-2 bg-church-orange text-white px-8 py-4 rounded-full font-medium hover:bg-church-gold transition-colors"
             >
-              Stay Updated <ArrowRight className="w-4 h-4" />
+              Give Now
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -459,4 +474,3 @@ export function GenerationHome() {
     </div>
   );
 }
-

@@ -5,8 +5,7 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { name: "About", href: "/about" },
-  { name: "Pastors", href: "/meet-the-pastor" },
-  { name: "Visit", href: "/visit" },
+  { name: "Visit us today", href: "/visit" },
   { name: "Sermons", href: "/sermons" },
   { name: "Connect", href: "/connect" },
   { name: "Watch Live", href: "/watch" },

@@ -98,9 +98,11 @@ export const aboutBeliefs: BeliefBlock[] = [
 ];
 
 export const aboutPastor = {
-  heading: "OUR PASTOR",
+  heading: "OUR PASTORS",
   p1:
     "Philip and Abisola Olabisi are the servant-leaders of Living Seed Church. For over 10 years, they have carried a burden and served as youth leaders at different parishes of the Redeemed Christian Church of God.",
   p2:
-    "They carry a burden for young people and in 2021, they pursued their call into planting a Young Adult and Youth Church in Winnipeg, Manitoba.",
+    "They carry a burden for young people and in 2021, they pursue their call into planting a Young Adult and Youth Church in Winnipeg, Manitoba.",
+  p3: 
+    "They have 2 children, Asher and Eden. They have a passion to help young people live out God’s plans for their lives.",
 } as const;

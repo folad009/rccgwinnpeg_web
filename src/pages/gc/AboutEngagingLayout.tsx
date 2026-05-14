@@ -54,7 +54,7 @@ export function AboutEngagingLayout() {
           aria-hidden
         />
         <div className="relative container mx-auto px-6 py-16 md:py-24 text-center max-w-4xl">
-          <p className="text-church-orange font-semibold tracking-[0.2em] text-xs uppercase mb-4">About</p>
+          
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">About Us</h1>
           <p className="text-slate-300 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
             Our story, mandate, vision, values, beliefs, and pastors — {lscSite.churchName}, a Young Adults and Youth
@@ -109,24 +109,7 @@ export function AboutEngagingLayout() {
               <p className="text-slate-700 leading-relaxed text-lg">{aboutStory.p2}</p>
             </div>
             <aside className="lg:col-span-5 lg:sticky lg:top-36">
-              <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-church-bg via-white to-orange-50/40 p-8 md:p-10 shadow-sm">
-                <div className="absolute right-4 top-4 text-8xl font-serif leading-none text-church-orange/15 select-none" aria-hidden>
-                  “
-                </div>
-                <p className="relative text-lg md:text-xl font-serif font-semibold text-slate-900 leading-snug mb-4">
-                  {aboutVision.lead}
-                </p>
-                <p className="relative text-slate-600 text-sm leading-relaxed border-l-2 border-church-orange pl-4">
-                  A snapshot of where God is taking us — read the full vision below.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => scrollToSection("about-vision")}
-                  className="relative mt-6 text-sm font-semibold text-church-orange hover:underline"
-                >
-                  Jump to vision →
-                </button>
-              </div>
+              <img src="/images/rccg-about-us.jpeg" alt={lscSite.coPastorAlt} className="rounded-2xl shadow-lg" />
             </aside>
           </div>
         </div>
@@ -254,26 +237,21 @@ export function AboutEngagingLayout() {
       {/* Pastors + photo */}
       <section id="about-pastor" className="scroll-mt-28 bg-church-bg py-16 md:py-20 border-t border-slate-200/80">
         <div className="container mx-auto px-6 max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-12 text-center md:text-left">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 text-center md:text-left">
             {aboutPastor.heading}
           </h2>
           <div className="grid gap-10 md:grid-cols-2 md:gap-14 md:items-center">
             <div className="order-2 md:order-1 space-y-6 text-lg text-slate-700 leading-relaxed">
               <p>{aboutPastor.p1}</p>
               <p>{aboutPastor.p2}</p>
-              <Link
-                to="/meet-the-pastor"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-church-orange hover:underline"
-              >
-                Meet the pastors page →
-              </Link>
+              <p>{aboutPastor.p3}</p>
             </div>
             <div className="order-1 md:order-2 mx-auto w-full max-w-md md:max-w-none">
               <div className="overflow-hidden rounded-3xl shadow-xl ring-1 ring-slate-200/80 bg-[#e8dcc8]">
                 <img
-                  src={lscSite.welcomePastorPhotoSrc}
-                  alt={lscSite.welcomePastorPhotoAlt}
-                  className="aspect-[4/5] w-full object-cover object-[center_12%]"
+                  src={lscSite.coPastorSrc}
+                  alt={lscSite.coPastorAlt}
+                  className="aspect-4/5 w-full object-cover object-[center_12%]"
                   width={800}
                   height={1000}
                   loading="lazy"

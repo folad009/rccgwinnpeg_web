@@ -51,7 +51,6 @@ export function VisitEngagingLayout() {
           aria-hidden
         />
         <div className="relative container mx-auto px-6 py-16 md:py-24 text-center max-w-4xl">
-          <p className="text-church-orange font-semibold tracking-[0.2em] text-xs uppercase mb-4">Visit</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">Visit Living Seed</h1>
           <p className="text-slate-300 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
             Whether you are new to church or new to Winnipeg, we would love to meet you. We are online for now — here
@@ -155,13 +154,7 @@ export function VisitEngagingLayout() {
             </p>
           </div>
 
-          <div className="mt-8 rounded-2xl border border-dashed border-church-orange/40 bg-orange-50/30 p-6 text-center">
-            <p className="text-slate-700 text-sm md:text-base">
-              <Sparkles className="inline h-4 w-4 text-church-orange -mt-0.5 mr-1" aria-hidden />
-              <span className="font-semibold text-slate-900">Pro tip:</span> introduce yourself in the chat or by
-              email — we read every message.
-            </p>
-          </div>
+          
         </div>
       </section>
 
@@ -176,9 +169,9 @@ export function VisitEngagingLayout() {
           </p>
 
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-            <div className="relative min-h-[280px] overflow-hidden rounded-3xl shadow-xl ring-1 ring-slate-200/80">
+            <div className="relative min-h-105 overflow-hidden rounded-3xl shadow-xl ring-1 ring-slate-200/80">
               <img
-                src={lscSite.goingOnSectionImageSrc}
+                src="/images/rccg-lsc-img.jpg"
                 alt={lscSite.goingOnSectionImageAlt}
                 className="absolute inset-0 h-full w-full object-cover"
                 loading="lazy"
@@ -316,7 +309,7 @@ export function VisitEngagingLayout() {
         </div>
       </section>
 
-      {/* Connect strip */}
+      {/* Connect strip 
       <section id="visit-connect" className="scroll-mt-28 bg-white py-16 md:py-20 border-t border-slate-100">
         <div className="container mx-auto px-6 max-w-5xl">
           <h2 className="text-3xl font-serif font-bold text-slate-900 mb-3 text-center">We are here for you</h2>
@@ -365,7 +358,7 @@ export function VisitEngagingLayout() {
             </Link>
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* FAQ */}
       <section id="visit-faq" className="scroll-mt-28 bg-church-bg py-16 md:py-20 border-t border-slate-200/80">

@@ -34,7 +34,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="min-h-screen font-sans text-slate-900 bg-[#fdfbf7]">
+      <div className="min-h-screen font-sans text-slate-900 bg-church-bg">
         <GenerationNavbar />
         <main>
           <Routes>
